@@ -1,5 +1,17 @@
 "use strict";
 
+/**
+ * Emulation of browser `window` and `dom`. Just enough to make ITSA work.
+ *
+ *
+ * <i>Copyright (c) 2014 ITSA - https://github.com/itsa</i>
+ * New BSD License - http://choosealicense.com/licenses/bsd-3-clause/
+ *
+ * @module node-win
+ * @class window
+ * @static
+*/
+
 var xmlhttprequest = require('./lib/XMLHttpRequest.js').XMLHttpRequest,
 	Url = require('url');
 
