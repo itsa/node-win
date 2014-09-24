@@ -1,0 +1,44 @@
+{
+    "name": "node-win",
+    "version": "0.0.1",
+    "description": "ITSA's Window and DOM emulator",
+    "author": {
+        "name": "Marco Asbreuk",
+        "email": "marco@itsasbreuk.nl"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsa/node-win"
+    },
+    "bugs": {
+        "url": "https://github.com/itsa/node-win/issues"
+    },
+    "keywords": [
+        "ITSA",
+        "Window emulator",
+        "DOM emulator"
+    ],
+    "main": "node-win.js",
+    "directories": {
+        "lib": "./lib"
+    },
+    "dependencies": {
+        "xmldom": "^0.1.19"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "scripts": {
+        "pretest": "jshint  ./*.js",
+        "test": "mocha tests/*.js  && istanbul cover $(which _mocha) -- tests/*.js",
+        "lint": "jshint --config ../../.jshintrc ./*.js"
+    },
+    "homepage": "http://itsa.github.io",
+    "maintainers": [
+        {
+            "name": "Marco Asbreuk",
+            "email": "marco@itsasbreuk.nl"
+        }
+    ],
+    "license": "New BSD"
+}
