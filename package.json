@@ -25,11 +25,17 @@
     "dependencies": {
         "xmldom": "^0.1.19"
     },
+    "devDependencies": {
+        "chai": "^1.9.1",
+        "istanbul": "^0.3.0",
+        "jshint": "^2.5.5",
+        "mocha": "^1.21.4"
+    },
     "engines": {
         "node": "*"
     },
     "scripts": {
-        "pretest": "jshint  ./*.js",
+        "pretest": "jshint ./*.js",
         "test": "mocha tests/*.js  && istanbul cover $(which _mocha) -- tests/*.js",
         "lint": "jshint ./*.js"
     },
