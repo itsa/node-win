@@ -31,7 +31,7 @@
     "scripts": {
         "pretest": "jshint  ./*.js",
         "test": "mocha tests/*.js  && istanbul cover $(which _mocha) -- tests/*.js",
-        "lint": "jshint --config ../../.jshintrc ./*.js"
+        "lint": "jshint ./*.js"
     },
     "homepage": "http://itsa.github.io",
     "maintainers": [
