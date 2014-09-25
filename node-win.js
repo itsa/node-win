@@ -12,6 +12,7 @@
  * @static
 */
 
+
 var xmlhttprequest = require('./lib/XMLHttpRequest.js').XMLHttpRequest,
 	Url = require('url');
 
