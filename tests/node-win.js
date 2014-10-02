@@ -175,6 +175,10 @@ describe('matchesSelector', function () {
         buttonnode.matchesSelector('#div1 #div2 button').should.be.true;
     });
 
+    it('buttonnode --> ".class1a button"', function () {
+        buttonnode.matchesSelector('.class1a button').should.be.true;
+    });
+
     it('buttonnode --> "#div1 #div2 #button3.class3a"', function () {
         buttonnode.matchesSelector('#div1 #div2 #button3.class3a').should.be.true;
     });
