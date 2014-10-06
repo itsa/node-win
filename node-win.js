@@ -374,6 +374,9 @@ var reset = function () {
 };
 reset();
 
+window.NodeList = Array;
+window.HTMLCollection = Array;
+
 window.navigator = {
 
 	userAgent: 'fake',
