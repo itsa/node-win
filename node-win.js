@@ -376,6 +376,7 @@ reset();
 
 window.NodeList = Array;
 window.HTMLCollection = Array;
+window.CSSStyleDeclaration = {};
 
 window.navigator = {
 
