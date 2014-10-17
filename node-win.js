@@ -77,7 +77,7 @@ doc.createElement = function(tag) {
 			this.namespaceURI = namespace;
 			this[name] = value.toString();
 		},
-		getAttribute: function(name, value) {
+		getAttribute: function(name) {
 			count('getAttribute');
 			return this[name];
 		},
