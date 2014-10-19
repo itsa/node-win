@@ -378,6 +378,9 @@ window.NodeList = Array;
 window.HTMLCollection = Array;
 window.CSSStyleDeclaration = {};
 
+window.console = require('polyfill/lib/window.console.js');
+// window.getComputedStyle = require('polyfill/lib/window.getcomputedstyle.js');
+
 window.navigator = {
 
 	userAgent: 'fake',
