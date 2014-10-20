@@ -11,6 +11,115 @@ var expect = require('chai').expect,
     bodyNode = DOCUMENT.body,
     divnode1, divnode2, buttonnode;
 
+describe('Document manipulation', function () {
+
+    it('document.appendChild', function () {
+        var lengthBefore = bodyNode.childNodes.length,
+            div1 = DOCUMENT.createElement('div'),
+            div2 = DOCUMENT.createElement('div');
+        div1.id = 'id1';
+        div2.id = 'id2';
+        bodyNode.appendChild(div1);
+        bodyNode.appendChild(div2);
+        expect(bodyNode.childNodes.length).to.be.eql(lengthBefore+2);
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-2].id).to.be.eql('id1');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-1].id).to.be.eql('id2');
+        DOCUMENT.body.childNodes.length = lengthBefore;
+    });
+
+    it('document.insertBefore', function () {
+        var lengthBefore = bodyNode.childNodes.length,
+            div1 = DOCUMENT.createElement('div'),
+            div2 = DOCUMENT.createElement('div'),
+            div3 = DOCUMENT.createElement('div');
+        div1.id = 'id1';
+        div2.id = 'id2';
+        div3.id = 'id3';
+        bodyNode.appendChild(div1);
+        bodyNode.appendChild(div3);
+        DOCUMENT.insertBefore(div2, div3);
+        expect(bodyNode.childNodes.length).to.be.eql(lengthBefore+3);
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-3].id).to.be.eql('id1');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-2].id).to.be.eql('id2');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-1].id).to.be.eql('id3');
+        bodyNode.childNodes.length = lengthBefore;
+    });
+
+    it('document.replaceChild', function () {
+        var lengthBefore = bodyNode.childNodes.length,
+            div1 = DOCUMENT.createElement('div'),
+            div2 = DOCUMENT.createElement('div'),
+            div3 = DOCUMENT.createElement('div'),
+            div2b = DOCUMENT.createElement('div');
+        div1.id = 'id1';
+        div2.id = 'id2';
+        div2b.id = 'id2b';
+        div3.id = 'id3';
+        bodyNode.appendChild(div1);
+        bodyNode.appendChild(div2);
+        bodyNode.appendChild(div3);
+        DOCUMENT.replaceChild(div2, div2b);
+        expect(bodyNode.childNodes.length).to.be.eql(lengthBefore+3);
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-3].id).to.be.eql('id1');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-2].id).to.be.eql('id2b');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-1].id).to.be.eql('id3');
+        bodyNode.childNodes.length = lengthBefore;
+    });
+
+    it('document.removeChild', function () {
+        var lengthBefore = bodyNode.childNodes.length,
+            div1 = DOCUMENT.createElement('div'),
+            div2 = DOCUMENT.createElement('div'),
+            div3 = DOCUMENT.createElement('div');
+        div1.id = 'id1';
+        div2.id = 'id2';
+        div3.id = 'id3';
+        DOCUMENT.appendChild(div1);
+        DOCUMENT.appendChild(div2);
+        DOCUMENT.appendChild(div3);
+        DOCUMENT.removeChild(div2);
+        expect(bodyNode.childNodes.length).to.be.eql(lengthBefore+2);
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-2].id).to.be.eql('id1');
+        expect(bodyNode.childNodes[bodyNode.childNodes.length-1].id).to.be.eql('id3');
+        bodyNode.childNodes.length = lengthBefore;
+    });
+
+});
+
+
+describe('Node manipulation', function () {
+
+    it('Node.appendChild', function () {
+        var div = DOCUMENT.createElement('div');
+        div.id = 'childdiv';
+        divnode1.appendChild(fragment);
+        expect(divnode1.childNodes[0]).to.be.eql(div);
+    });
+
+    it('Node.insertBefore', function () {
+        var div = DOCUMENT.createElement('div');
+        div.id = 'childdiv';
+        divnode1.appendChild(fragment);
+        expect(divnode1.childNodes[0]).to.be.eql(div);
+    });
+
+    it('Node.replaceChild', function () {
+        var div = DOCUMENT.createElement('div');
+        div.id = 'childdiv';
+        divnode1.appendChild(fragment);
+        expect(divnode1.childNodes[0]).to.be.eql(div);
+    });
+
+    it('Node.removeChild', function () {
+        var div = DOCUMENT.createElement('div');
+        div.id = 'childdiv';
+        divnode1.appendChild(fragment);
+        expect(divnode1.childNodes[0]).to.be.eql(div);
+    });
+
+});
+
+
 describe('matchesSelector', function () {
 
         before(function() {
@@ -278,6 +387,32 @@ describe('matchesSelector', function () {
 
     it('buttonnode --> ".class1a.class1b #div2.class2a.class2b .class3a"', function () {
         buttonnode.matchesSelector('.class1a.class1b #div2.class2a.class2b .class3a').should.be.true;
+    });
+
+});
+
+describe('createDocumentFragment', function () {
+
+        before(function() {
+            bodyNode.id = 'fakebody';
+            divnode1 = DOCUMENT.createElement('div');
+            DOCUMENT.body.appendChild(divnode1);
+        });
+
+        // Code to execute after the tests inside this describegroup.
+        after(function() {
+            DOCUMENT.body.removeChild(divnode1);
+            delete bodyNode.id;
+        });
+
+
+    it('createDocumentFragment', function () {
+        var fragment = DOCUMENT.createDocumentFragment(),
+            div = DOCUMENT.createElement('div');
+        div.id = 'childdiv';
+        fragment.appendChild(div);
+        divnode1.appendChild(fragment);
+        expect(divnode1.childNodes[0]).to.be.eql(div);
     });
 
 });

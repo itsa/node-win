@@ -23,7 +23,8 @@
         "lib": "./lib"
     },
     "dependencies": {
-        "xmldom": "^0.1.19"
+        "xmldom": "^0.1.19",
+        "js-ext": "itsa/js-ext"
     },
     "devDependencies": {
         "chai": "^1.9.1",
