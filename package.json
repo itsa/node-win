@@ -24,7 +24,8 @@
     },
     "dependencies": {
         "xmldom": "^0.1.19",
-        "js-ext": "itsa/js-ext"
+        "js-ext": "itsa/js-ext",
+        "polyfill": "itsa/polyfill"
     },
     "devDependencies": {
         "chai": "^1.9.1",
