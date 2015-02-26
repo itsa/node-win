@@ -19,8 +19,8 @@ var xmlhttprequest = require('./lib/XMLHttpRequest.js').XMLHttpRequest,
     xmlDOMParser = require('xmldom').DOMParser,
 	Url = require('url'),
     used = createHashMap(),
-    vNodeParser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[.+?\])/g,
-    count, doc, win, getHTML, reset;
+    // vNodeParser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[.+?\])/g,
+    count, doc, win, getHTML, reset, EventTypes;
     EventTypes = createHashMap({
 		MouseEvents: function () {
 			this.initMouseEvent = function (type, bubbles, cancelable, view, detail,
@@ -159,9 +159,9 @@ win = {
 		},
 		navigate: function (url) {
 			var u = Url.parse(url, false, true);
-			window.location.search = u.search || '';
-			window.location.pathname = u.pathname || '';
-			window.location.hash = u.hash || '';
+			win.location.search = u.search || '';
+			win.location.pathname = u.pathname || '';
+			win.location.hash = u.hash || '';
 		}
 	},
 
